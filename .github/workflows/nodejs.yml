@@ -22,6 +22,5 @@ jobs:
         npm ci
         npm run build --if-present
         npm test
-        node node_modules/mocha/bin/mocha -r ts-node/register **/*.test.ts
       env:
         CI: true
