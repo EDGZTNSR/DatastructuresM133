@@ -1,29 +1,89 @@
 import { expect } from "chai";
 import { Queue } from "../lib/Queue";
+import { Stack } from "../lib/Stack";
 
 describe("Data structures", () => {
     describe("Queue", () => {
         it("has size", () => {
-            const testee = new Queue();
-            const result = testee.size();
+            const tqueue = new Queue();
+            const result = tqueue.size();
             expect(result).to.equal(0);
         })
+        it("can increase size", () => {
+            const tqueue = new Queue();
+            tqueue.enqueue("value");
+            const result = tqueue.size();
+            expect(result).to.be.equal(1);
+        });
 
-        it("increases size", () => {
-            const test = new Queue();
-            test.push("value");
-            test.push("value2");
+        it("is empty", () => {
+            const tqueue = new Queue();
+            const result = tqueue.isEmpty();
+            expect(result).to.be.equal(true);
+        });
 
-            const result = test.size();
-            expect(result).to.equal(2);
-            
+        it("isn't empty", () => {
+            const tqueue = new Queue();
+            tqueue.enqueue("value");
+            const result = tqueue.isEmpty();
+            expect(result).to.be.equal(false);
+        });
+
+        it("peek item", () => {
+            const tqueue = new Queue();
+            tqueue.enqueue("value");
+            const result = tqueue.peek(0);
+            expect(result).to.be.equal("value");
+        });
+
+        it("poll item", () => {
+            const tqueue = new Queue();
+            tqueue.enqueue("value1");
+            tqueue.enqueue("value2");
+            const result = tqueue.poll();
+            expect(result).to.be.equal("value1");
         })
     })
-    // describe("Factory", () => {
-    //     it("can create Queue", () => {
-    //         const structureType = DataStructures.Queue;
-    //         const result = DataStructureFactory.create(structureType);
-    //         expect(result).to.be.an.instanceOf(Queue);
-    //     })
-    // })
+    
+    describe("Stack", () => {
+        it("has size", () => {
+            const tstack = new Stack();
+            const result = tstack.size();
+            expect(result).to.equal(0);
+        })
+        it("can increase size", () => {
+            const tstack = new Stack();
+            tstack.enqueue("value");
+            const result = tstack.size();
+            expect(result).to.be.equal(1);
+        });
+
+        it("is empty", () => {
+            const tstack = new Stack();
+            const result = tstack.isEmpty();
+            expect(result).to.be.equal(true);
+        });
+
+        it("isn't empty", () => {
+            const tstack = new Stack();
+            tstack.enqueue("value");
+            const result = tstack.isEmpty();
+            expect(result).to.be.equal(false);
+        });
+
+        it("peek item", () => {
+            const tstack = new Stack();
+            tstack.enqueue("value");
+            const result = tstack.peek(0);
+            expect(result).to.be.equal("value");
+        });
+
+        it("poll item", () => {
+            const tstack = new Stack();
+            tstack.enqueue("value1");
+            tstack.enqueue("value2");
+            const result = tstack.poll();
+            expect(result).to.be.equal("value2");
+        })
+    })
 })
